@@ -73,8 +73,9 @@ class TestLoader(unittest.TestCase):
         obj = self.bucket.new(self.test_key, data=data)
         obj.store()
         
-        # Not sure what will happen
         m = loader[self.test_key]
+
+        self.assertEqual(m.to_dict(serial=True), {})
         
     def test_get_wrong_data(self):
         """Test what happens when the stored data mismatches the model's schema"""
@@ -85,7 +86,6 @@ class TestLoader(unittest.TestCase):
         obj = self.bucket.new(self.test_key, data=data)
         obj.store()
         
-        # Not sure what will happen
         m = loader[self.test_key]
 
         self.assertEqual(m.to_dict(serial=True), {})
