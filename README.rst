@@ -49,11 +49,11 @@ Sometimes you want to put scoping information in the bucket's name, but the mode
 
 The same model is used, but different buckets.
 
-Querying
-=========
+Handling Lists
+=================
 
 Riak is a k/v store and this maps nicely to Python dictionaries, however sometimes you have a list of RiakObjects.
-Here's an example from a search result using the Solr interface::
+Here's an example from a search result using the Riak Search Solr interface::
 
     bucket = client.bucket("eric_entries")
     loader = Loader(bucket, MyModel)
