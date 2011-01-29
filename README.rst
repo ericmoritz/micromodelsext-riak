@@ -48,3 +48,28 @@ Sometimes you want to put scoping information in the bucket's name, but the mode
 
 
 The same model is used, but different buckets.
+
+Querying
+=========
+
+Riak is a k/v store and this maps nicely to Python dictionaries, however sometimes you have a list of RiakObjects.
+Here's an example from a search result using the Solr interface::
+
+    bucket = client.bucket("eric_entries")
+    loader = Loader(bucket, MyModel)
+
+    result = solr.search("title:bicycle", rows=20)
+    obj_gen = (bucket.get(r['id']) for r in result)
+    model_list = [loader.cast(obj) for obj in obj_gen]
+
+This actually could be shorten by doing the following::
+
+    bucket = client.bucket("eric_entries")
+    loader = Loader(bucket, MyModel)
+
+    result = solr.search("title:bicycle", rows=20)
+    model_list = [loader[r['id']] for r in result]
+
+
+
+  
