@@ -1,6 +1,6 @@
 Micromodels Riak
 ------------------
-This is a really simple micromodels loader for Riak
+This is a really simple `micromodels <https://github.com/j4mie/micromodels>`_ loader for Riak
 
 Example
 ========
